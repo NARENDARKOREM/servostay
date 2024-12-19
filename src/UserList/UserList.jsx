@@ -121,13 +121,15 @@ const UserList = () => {
                         user.id === id ? { ...user, [field]: newValue } : user
                     )
                 );
-
+                NotificationManager.removeAll();
                 NotificationManager.success('Status updated successfully!');
             } else {
+                NotificationManager.removeAll();
                 NotificationManager.error('Failed to update status.');
             }
         } catch (error) {
             console.error('Error updating toggle:', error);
+            NotificationManager.removeAll();
             NotificationManager.error('Error updating toggle.');
         }
     };
